@@ -70,11 +70,26 @@ let appData = {
     },
     chooseIncome: function(){
         let items = prompt("Что может принести дополнительный доход? (Перечислите, через  запятую)", '');
-        appData.income = items.split(", ");
-        appData.income.push(prompt("что то еще? (только одно!)"));
-        appData.income.sort();
+
+        if (typeof(items) !== "string" || items == "" ||typeof(items) == null){
+            console.log("не корректное значение!");
+        }else{
+                appData.income = items.split(", ");
+                appData.income.push(prompt("что то еще? (через запятую!)"));
+                appData.income.sort();
+        }
+
+        appData.income.forEach(function(item,index){
+            alert("Способы дополнительного зароботка: "+(index+1) + "-"+ item);
+        })
     }
-}
+};
+
+for( let key in appData){
+    console.log("Наша программа включает в себя данные: "+key+"-"+ appData[key]);
+};
+
+
 
 
 
