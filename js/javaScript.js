@@ -1,5 +1,5 @@
 "user strict";
-
+const MaxSimvol = 50;
 
 let startBtn = document.getElementById("start"),
     budgetValue = document.getElementsByClassName('budget-value')[0],
@@ -10,6 +10,7 @@ let startBtn = document.getElementById("start"),
     incomeValue = document.getElementsByClassName('income-value')[0],
     monthSavingsValue = document.getElementsByClassName('monthsavings-value')[0],
     yearSavingsValue = document.getElementsByClassName('yearsavings-value')[0],
+ 
 
 
     expensesItem = document.getElementsByClassName('expenses-item'),
@@ -48,14 +49,14 @@ expensesBtn.addEventListener('click', function(){
         let a = expensesItem[i].value;
         let b = expensesItem[++i].value;
         if (typeof (a) === 'string' && typeof (a) != null && typeof (b) != null && a != ""
-                && b != "" && a.length < 50) {
+                && b != "" && a.length < MaxSimvol) {
                 // console.log(done);
                 appData.expenses[a] = b;
                 sum += +b;
             }
 
             else {
-                alert("rone imput!");
+                alert("wrong imput!");
                 i--;
             };
     }
@@ -97,6 +98,7 @@ incomeItem.addEventListener('input', function(){
 });
 
 checkSavings.addEventListener('click', function(){
+
     if(appData.savings == true){
         appData.savings = false;
     }else{
